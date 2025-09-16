@@ -39,4 +39,7 @@ spring.ai.ollama.chat.options.model=mistral
 spring.ai.ollama.chat.options.temperature=0.7
 ```
 
+> ✅ **Note:** With just this minimal configuration, the AI model is fully integrated into your Spring Boot application using Spring AI.  
+> You can start calling AI models just like any other Spring service.
+
 
