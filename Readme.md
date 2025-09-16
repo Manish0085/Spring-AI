@@ -13,3 +13,56 @@ Spring AI makes it easy to use **Artificial Intelligence (AI) models** inside **
 
 ---
 
+## Key Features
+
+- **Multi-Model & Provider Support**
+    - Works with **OpenAI, Azure, Hugging Face, Ollama, Amazon Bedrock**, etc.
+    - Switch providers easily by just changing configuration.
+
+- **Spring-Friendly APIs**
+    - Provides **Spring Beans** for AI clients.
+    - You can inject and call AI like a normal Spring service.
+    - Example: Injecting `ChatClient` interface
+      ```java
+      public class ChatController {
+          private final ChatClient chatClient;
+  
+          public ChatController(ChatClient.Builder builder) {
+              this.chatClient = builder.build();
+          }
+      }
+      ```
+
+- **Prompt Management**
+    - Store prompts in external files (`.st`, `.mustache`, `.ftl`) instead of hardcoding.
+    - Makes prompts **reusable and version-controlled**.
+    - Example: prompt file (`greeting.st`):
+      ```text
+      Hello, my name is { name }. Can you greet me back nicely?
+      ```
+
+- **Embeddings Support (Vector DB + RAG)**
+    - Generate embeddings from text using AI models.
+    - Store in vector databases like **PostgreSQL, Redis, Milvus, Pinecone**.
+    - Enable **RAG (Retrieval-Augmented Generation)** for smarter Q&A.
+
+- **Chat History & Memory**
+    - Supports **conversational memory** → remembers past interactions.
+    - Useful for chatbots and customer support assistants.
+
+- **Streaming Responses**
+    - Stream tokens as they are generated (like ChatGPT live typing).
+
+- **Integration with Spring Ecosystem**
+    - Works seamlessly with **Spring Boot** (REST APIs, Security, Config).
+    - Can be combined with **Spring Data** (for storing chat history & embeddings).
+    - Supports **Spring Cloud Config** for centralized AI key management.
+
+---
+
+
+### Example Use Case: Customer Support Chatbot in Spring Boot
+
+1. User asks: *“What is your refund policy?”*
+2. Spring AI sends the question to **ChatGPT/OpenAI**.
+3. If the answer is not in the prompt, Spring AI fetches relevant data from the **vector database** (where your FAQ documents are stored).  
