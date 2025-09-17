@@ -21,6 +21,7 @@ public class ChatServiceImpl implements ChatService{
     }
 
 
+
     @Override
     public String chat(String query) {
 //        String prompt = "tell me about virat kohli.";
