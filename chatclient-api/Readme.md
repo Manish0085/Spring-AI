@@ -13,7 +13,7 @@ spring.ai.ollama.chat.options.temperature=0.7
 ## While creating Prompts
 
 ```
-Prompt prompt = new Prompt(query, OllamaChatOptions.builder()
+Prompt prompt = new Prompt(query, OpenAiChatOptions.builder()
                                 .model("codellama)
                                 .temperature(0.7)
                                 .maxTokens(100)
@@ -28,7 +28,7 @@ Prompt prompt = new Prompt(query, OllamaChatOptions.builder()
 private ChatClient chatclient;
 public ChatController(ChatClient.Builder builder){
     this.chatClient = builder
-                    .defaultOptions(OllamaChatOptions.builder()
+                    .defaultOptions(OpenAiChatOptions.builder()
                         .model("codellama)
                         .temerature(0.7)
                         .maxToken(100)
