@@ -71,6 +71,103 @@ Spring AI makes it easy to use **Artificial Intelligence (AI) models** inside **
 ---
 
 
+## AI Concepts
+
+### Models
+
+- **AI models** are tools that learn from data to generate outputs such as **text, images, speech, or embeddings**.
+
+
+```
+Flow of an AI Model:
+
+   Training Data
+        |
+        v
++----------------+
+|   AI Model     |
++----------------+
+        ^
+        |
+   +----------+
+   |  Prompt  |  <---- User
+   +----------+
+        |
+        v
+     Answer
+
+```
+
+
+- **Spring AI** supports many types of models, including:
+  - Text
+  - Images
+  - Audio
+  - Embeddings (turning text into numbers for advanced tasks)
+
+- Many supported models come **pre-trained** (like GPT), so you can start using them right away without training your own.
+
+---
+
+### Prompts
+
+- A **Prompt** is what you tell the AI models — like a **question** or an **instruction**.
+- In **Spring AI**, prompts can have **placeholders** (e.g., `{name}`) which get filled with real values at runtime — similar to using templates.
+
+#### Underlying APIs & Abstractions
+
+Spring AI provides a **unified and reusable API** to handle:
+
+- Client Connection
+- Vector Database
+- Tool / Function Calling
+- Observability
+- Auto-Configuration and Spring Boot Starter
+- RAG (Retrieval-Augmented Generation) Pattern
+
+---
+
+### Tokens
+
+- **Tokens** are the smallest units of text that an AI model can understand.
+- A token could be:
+  - A whole word
+  - Part of a word
+  - Punctuation
+
+### Example
+- Word: **"Unbelievable"**
+- Split into tokens: `["un", "believe", "able"]`
+
+
+
+### Why Tokens Matter?
+
+- **Cost** → AI services usually charge based on the number of tokens processed.
+  - More text = More tokens = Higher cost 💰
+- **Limits** → Models have a maximum token limit for input + output combined.
+
+---
+
+### Embeddings
+
+- **Embeddings** turn **text, images, or videos** into **vectors** (arrays of numbers).
+- These vectors capture **meaning/semantics** (not just the exact words).
+
+#### Example
+- **king** and **queen** → embeddings will be **close** to each other.
+- **king** and **car** → embeddings will be **far apart**.
+
+
+#### Why Use Embeddings?
+
+- They allow you to **measure similarity** by comparing distances between vectors.
+- Useful for:
+  - **Semantic Search** → finding text/documents with similar meaning.
+  - **RAG (Retrieval-Augmented Generation)** → fetching relevant information to improve AI responses.
+
+---
+
 ## ChatClient API
 
 - **ChatClient** is an interface that provides the higher level of abstraction between your app and AI model.
@@ -139,3 +236,4 @@ String resultResponse = chatClient
   - Usually, in normal apps, we **don’t use ChatModel directly**.
   - Instead, we use `ChatClient` (because it’s simpler and user-friendly).
   - But if you need **fine-grained control** (advanced customization), then you can work with `ChatModel` directly.  
+
