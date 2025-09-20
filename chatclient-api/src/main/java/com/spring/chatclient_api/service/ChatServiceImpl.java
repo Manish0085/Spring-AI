@@ -127,6 +127,19 @@ public class ChatServiceImpl implements ChatService{
     }
 
     public String creatingPromptForSpecificRoleUsingFluentApi(){
-
+        return chatClient
+                .prompt()
+                .system(system -> {
+                    system.text("You are a helpful coding assistant.You are an expert in coding.");
+                })
+                .user(user -> {
+                    user.text("What is {techName}. Tell me example of {techExample}")
+                            .params(Map.of(
+                                    "techName", "Spring",
+                                    "techExample", "Java Exception"
+                            ));
+                })
+                .call()
+                .content();
     }
 }
