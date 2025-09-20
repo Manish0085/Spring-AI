@@ -13,4 +13,10 @@ public interface ChatService {
     List<Tut> chatToListEntity(String query);
 
     String chatTemplate();
+
+    String creatingPromptForSpecificRole();
+
+    String creatingPromptForSpecificRoleUsingFluentApi();
+
+    String readingPromptsfromFile();
 }

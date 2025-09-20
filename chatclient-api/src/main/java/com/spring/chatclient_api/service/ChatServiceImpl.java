@@ -7,7 +7,9 @@ import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +20,13 @@ public class ChatServiceImpl implements ChatService{
 
 
     private ChatClient chatClient;
+
+
+    @Value("classpath:/prompts/system-message.st")
+    private Resource systemMessage;
+
+    @Value("classpath:/prompts/user-message.st")
+    private Resource userMessage;
 
     public ChatServiceImpl(ChatClient.Builder builder){
         this.chatClient = builder.build();
@@ -101,6 +110,8 @@ public class ChatServiceImpl implements ChatService{
         return this.chatClient.prompt(prompt).call().content();
     }
 
+
+    @Override
     public String creatingPromptForSpecificRole(){
         SystemPromptTemplate systemPromptTemplate = SystemPromptTemplate
                 .builder()
@@ -126,6 +137,7 @@ public class ChatServiceImpl implements ChatService{
 
     }
 
+    @Override
     public String creatingPromptForSpecificRoleUsingFluentApi(){
         return chatClient
                 .prompt()
@@ -138,6 +150,23 @@ public class ChatServiceImpl implements ChatService{
                                     "techName", "Spring",
                                     "techExample", "Java Exception"
                             ));
+                })
+                .call()
+                .content();
+    }
+
+
+    public String readingPromptsfromFile(){
+        return chatClient
+                .prompt()
+                .system(system -> {
+                    system.text(this.systemMessage).params(Map.of(
+                            "name", "Stiphen Marek",
+                            "role", "Cloud Engineer"
+                            ));
+                })
+                .user(user -> {
+                    user.text(this.userMessage).param("question", "What is Spring Boot and Microservices");
                 })
                 .call()
                 .content();
