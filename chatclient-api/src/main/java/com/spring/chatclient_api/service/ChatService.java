@@ -11,4 +11,6 @@ public interface ChatService {
     Tut chatToEntity(String query);
 
     List<Tut> chatToListEntity(String query);
+
+    String chatTemplate();
 }

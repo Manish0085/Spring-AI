@@ -37,3 +37,22 @@ public ChatController(ChatClient.Builder builder){
 }
 ```
 
+---
+
+
+## Prompt Templates
+
+```
+public String chat(String query){
+    Prompt prompt = new Prompt(query);
+    String quesryStr = "Act as an expert in coding and programming. Always write program in Java.: {query}";
+    var result = chatClient
+                .prompt()
+                .user(u -> u.text(queryStr).param("query", queryStr))
+                .call()
+                .content();
+    return result; 
+}
+
+```
+
