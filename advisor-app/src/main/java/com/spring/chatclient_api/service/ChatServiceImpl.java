@@ -2,6 +2,7 @@ package com.spring.chatclient_api.service;
 
 import com.spring.chatclient_api.entity.Tut;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.metadata.ChatResponseMetadata;
 import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -35,6 +36,7 @@ public class ChatServiceImpl implements ChatService{
     public String chatTemplate(String query){
         return chatClient
                 .prompt()
+//                .advisors(new SimpleLoggerAdvisor())
                 .system(system -> {
                     system.text(this.systemMessage).params(Map.of(
                             "name", "Stiphen Marek",
