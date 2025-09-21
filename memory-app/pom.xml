@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring</groupId>
-	<artifactId>memory-app</artifactId>
+	<artifactId>Storing chat in app's in-memory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>memory-app</name>
 	<description>Understanding Chat Client API </description>
