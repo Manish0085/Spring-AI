@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.spring</groupId>
-	<artifactId>chatclient-api</artifactId>
+	<artifactId>stream-response-app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>chatclient-api</name>
+	<name>stream-response-app</name>
 	<description>Understanding Chat Client API </description>
 	<url/>
 	<licenses>
