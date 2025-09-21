@@ -34,7 +34,7 @@ public class ChatServiceImpl implements ChatService{
         this.chatClient = builder.build();
     }
 
-    public Flux<String> streamChat(String query){
+    public String chat(String query){
         return chatClient
                 .prompt()
                 .system(system -> {
@@ -46,7 +46,7 @@ public class ChatServiceImpl implements ChatService{
                 .user(user -> {
                     user.text(this.userMessage).param("question", query);
                 })
-                .stream()
+                .call()
                 .content();
 
     }

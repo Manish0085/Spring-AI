@@ -26,10 +26,10 @@ public class ChatController {
     }
 
 
-    @GetMapping("/stream-chat")
-    public ResponseEntity<Flux<String>> streamChat(
+    @GetMapping("/chat")
+    public ResponseEntity<String> chat(
             @RequestParam(value = "q", required = true) String q
     ){
-        return ResponseEntity.ok(service.streamChat(q));
+        return ResponseEntity.ok(service.chat(q));
     }
 }

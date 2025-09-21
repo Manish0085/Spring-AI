@@ -9,5 +9,5 @@ public interface ChatService {
 
 
 
-    Flux<String> streamChat(String query);
+    String chat(String query);
 }
