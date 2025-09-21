@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 
 @RestController
@@ -24,10 +26,10 @@ public class ChatController {
     }
 
 
-    @GetMapping("/chat")
-    public ResponseEntity<String> chat(
+    @GetMapping("/stream-chat")
+    public ResponseEntity<Flux<String>> streamChat(
             @RequestParam(value = "q", required = true) String q
     ){
-        return ResponseEntity.ok(service.chatTemplate(q));
+        return ResponseEntity.ok(service.streamChat(q));
     }
 }

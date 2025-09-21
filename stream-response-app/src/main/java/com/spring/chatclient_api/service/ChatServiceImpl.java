@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 import java.util.Map;
@@ -33,10 +34,9 @@ public class ChatServiceImpl implements ChatService{
         this.chatClient = builder.build();
     }
 
-    public String chatTemplate(String query){
+    public Flux<String> streamChat(String query){
         return chatClient
                 .prompt()
-//                .advisors(new SimpleLoggerAdvisor())
                 .system(system -> {
                     system.text(this.systemMessage).params(Map.of(
                             "name", "Stiphen Marek",
@@ -46,7 +46,8 @@ public class ChatServiceImpl implements ChatService{
                 .user(user -> {
                     user.text(this.userMessage).param("question", query);
                 })
-                .call()
+                .stream()
                 .content();
+
     }
 }
