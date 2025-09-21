@@ -19,9 +19,37 @@ public class TokenPrintAdvisor implements CallAdvisor, StreamAdvisor {
     @Override
     public ChatClientResponse adviseCall(ChatClientRequest chatClientRequest, CallAdvisorChain callAdvisorChain) {
         this.logger.info("My Token Print Advisor is called: ");
-        this.logger.info("Request: "+ chatClientRequest.prompt().getContents());
-        ChatClientResponse chatClientResponse = callAdvisorChain.nextCall(chatClientRequest);
-        this.logger.info("Response received from the model");
+        this.logger.info("Request: "+ chatClientRequest.prompt()
+                .getContents());
+
+        ChatClientResponse chatClientResponse = callAdvisorChain
+                .nextCall(chatClientRequest);
+
+        this.logger.info("Token Advisor: Response received from the model");
+        this.logger.info("Response: "+chatClientResponse
+                .chatResponse()
+                .getResult()
+                .getOutput()
+                .getText());
+
+        this.logger.info("Prompt Token: "+chatClientResponse
+                .chatResponse()
+                .getMetadata()
+                .getUsage()
+                .getPromptTokens());
+
+        this.logger.info("Completion Token: "+chatClientResponse
+                .chatResponse()
+                .getMetadata()
+                .getUsage()
+                .getCompletionTokens());
+
+        this.logger.info("Total token consumed: "+chatClientResponse
+                .chatResponse()
+                .getMetadata()
+                .getUsage()
+                .getTotalTokens());
+
         return chatClientResponse;
     }
 
