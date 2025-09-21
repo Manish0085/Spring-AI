@@ -56,6 +56,18 @@ public String chat(String query){
 
 ```
 
+---
+
+## 🔹 Flow
+
+```text
+Prompt Templating ---> [PromptTemplate] ---> {render} ---> [Prompt] ---> {create} ---> [Message] ---> ChatClient
+                              |
+                      Template Renderer
+
+
+``` 
+---
 
 ## Prompt Design Best Practices for Spring AI
 
