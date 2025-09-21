@@ -3,6 +3,7 @@ package com.spring.chatclient_api.service;
 import com.spring.chatclient_api.entity.Tut;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.metadata.ChatResponseMetadata;
 import org.springframework.ai.chat.model.Generation;
 import org.springframework.ai.chat.prompt.Prompt;
@@ -49,5 +50,26 @@ public class ChatServiceImpl implements ChatService{
                 .call()
                 .content();
 
+    }
+
+    @Override
+    public String chatWithInMemory(String query, String userId) {
+        return chatClient
+                .prompt()
+                .advisors(advisorSpec -> {
+                    advisorSpec.param(ChatMemory.CONVERSATION_ID, userId);
+                })
+                .system(system -> {
+                    system.text(this.systemMessage).params(
+                        Map.of(
+                                "name", "Stiphen Marek",
+                                "role", "Cloud Engineer"
+                        ));
+                })
+                .user(user -> {
+                    user.text(userMessage).param("question", query);
+                })
+                .call()
+                .content();
     }
 }

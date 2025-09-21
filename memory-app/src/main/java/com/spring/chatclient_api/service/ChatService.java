@@ -10,4 +10,6 @@ public interface ChatService {
 
 
     String chat(String query);
+
+    String chatWithInMemory(String query, String userId);
 }
