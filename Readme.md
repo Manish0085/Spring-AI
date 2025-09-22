@@ -246,6 +246,25 @@ String resultResponse = chatClient
 
 Instead of relying only on the model’s training data, RAG pulls **relevant documents/data from external sources** (DB, vector store, APIs) and uses that to **augment the prompt** before generating an answer.
 
+### RAG (Retrieval-Augmented Generation)
+
+```text
+    ┌──────────────┐       ┌───────────────┐       ┌───────────────┐
+    │  Retrieval   │ ───▶  │   Augmented   │ ───▶  │  Generations  │
+    └──────────────┘       └───────────────┘       └───────────────┘
+          │                      │                        │
+          ▼                      ▼                        ▼
+
+```
+
+---
+
+### 🔹 Explanation
+- **Retrieval** → Fetch the most relevant information from the database.
+- **Augmented** → Combine the retrieved context with the user’s prompt.
+- **Generations** → LLM (Large Language Model) generates the final answer.
+
+
 ---
 
 ## 🔹 Why RAG in Spring AI?
