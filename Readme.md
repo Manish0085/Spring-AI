@@ -237,3 +237,47 @@ String resultResponse = chatClient
   - Instead, we use `ChatClient` (because it’s simpler and user-friendly).
   - But if you need **fine-grained control** (advanced customization), then you can work with `ChatModel` directly.  
 
+
+---
+
+## 🔹 What is RAG?
+
+**Retrieval-Augmented Generation (RAG)** is an AI technique that combines **retrieval of external knowledge** with **generative models**.
+
+Instead of relying only on the model’s training data, RAG pulls **relevant documents/data from external sources** (DB, vector store, APIs) and uses that to **augment the prompt** before generating an answer.
+
+---
+
+## 🔹 Why RAG in Spring AI?
+
+Spring AI provides ready-to-use **abstractions and integrations** for:
+
+- **Vector Stores** → Postgres + pgvector, Pinecone, Redis, Elasticsearch, etc.
+- **Embeddings** → OpenAI, Ollama, HuggingFace models
+- **Retrieval APIs** → Fetch relevant chunks based on user query
+- **ChatClient** → Stitches retrieval + generation seamlessly
+
+---
+
+## 🔹 RAG Workflow in Spring AI
+
+### 1. Document Ingestion
+- Split documents into chunks
+- Generate embeddings
+- Store embeddings in a vector database
+
+### 2. Query Processing
+- Convert query → embedding
+- Search similar chunks in vector store
+
+### 3. Augmented Prompt
+- Combine query + retrieved context
+- Send to LLM (via `ChatClient`)
+
+### 4. Generate Answer
+- LLM responds with **contextually grounded output**  
+
+
+![RAG Workflow](Screenshot 2025-09-22 104832.png)
+
+
