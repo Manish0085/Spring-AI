@@ -300,3 +300,37 @@ Spring AI provides ready-to-use **abstractions and integrations** for:
 ![RAG Workflow](RAG.png)
 
 
+---
+
+## What is a Vector?
+
+In AI/ML, a **vector** is an array of numbers that represents some kind of information (text, image, audio, video, etc.) in a mathematical form. These vectors are often called **embeddings**.
+
+**Example:**
+
+Text example (embedding):
+```text
+┌──────────────┐       
+│  Apple       │  ───▶   [0.12, 0.83, -0.45, ...]  (text embedding)
+└──────────────┘
+```
+
+```text
+┌──────────────┐       
+│  Dog image   │  ───▶   [0.33, 0.05, -0.15, ...]  (image embedding)
+└──────────────┘
+
+```
+
+It allows to search by similarity (cosine similarity, Euclidean distance etc).
+
+---
+
+
+## What is a Vector Database?
+
+A **Vector Database** is a specialized database designed to store and search **vectors (embeddings)** efficiently.
+
+It is optimized for:
+- Storing high-dimensional vectors.
+- Performing **fast similarity searches** (e.g., finding the closest match to a query vector).  
