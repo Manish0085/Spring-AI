@@ -278,6 +278,6 @@ Spring AI provides ready-to-use **abstractions and integrations** for:
 - LLM responds with **contextually grounded output**  
 
 
-![RAG Workflow](Screenshot 2025-09-22 104832.png)
+![RAG Workflow](RAG.png)
 
 
